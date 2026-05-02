@@ -2,6 +2,8 @@ name: PlayerNametag
 main: org.fnzero.playernametag.PlayerNametag
 version: 1.0.0
 api-version: 1.20
+github: https://github.com/fnzero/PlayerNametag
+license: LGPL-3.0
 depend: [LuckPerms]
 softdepend: [PlaceholderAPI]
 description: Modern nametag + chat plugin using ArmorStand with Geyser/Bedrock support

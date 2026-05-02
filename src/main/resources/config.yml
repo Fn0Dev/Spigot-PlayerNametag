@@ -82,12 +82,3 @@ performance:
 ##
 ## PlaceholderAPI: Use [papi:vault_eco_balance] for Vault money, [papi:player_health] for health, etc.
 ## Requires PlaceholderAPI plugin installed.
-
-## Commands & Permissions
-## /playername reload                    - playernametag.reload     - Reload config
-## /playername name <player> <string>   - playernametag.name      - Set custom display name (supports color codes)
-## /playername name <player> clear      - playernametag.name      - Clear custom display name
-##
-## Example: /playername name Voxl_ &aTestName
-## Example: /playername name Voxl_ <green>Test Name
-## Note: Custom names are stored in LuckPerms meta: pn_custom_name

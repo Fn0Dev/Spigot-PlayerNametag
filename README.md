@@ -1,6 +1,6 @@
 # PlayerNametag
 
-Standalone nametag plugin using ArmorStand for Geyser/Bedrock compatibility. Features LuckPerms integration, chat
+Standalone nametag plugin using ArmorStand. Features LuckPerms integration, chat
 formatting, and PlaceholderAPI support.
 
 ## Commands
@@ -78,3 +78,7 @@ plugin.nametagManager.restart()               // Restart nametag system
 ## Config
 
 See `src/main/resources/config.yml` for all configuration options.
+
+## License
+
+This plugin is licensed under the [LGPL-3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html) license.
