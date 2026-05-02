@@ -1,0 +1,93 @@
+# PlayerNametag Configuration
+
+## Display Settings (Nametag)
+display:
+  # Enable/disable virtual nametag system
+  enabled: true
+
+  # Global prefix/suffix applied to ALL players (use MiniMessage format or &_ color codes)
+  # These are replaced in {prefix} and {suffix} placeholders
+  # Supports: &0-9, &a-f (colors), &l (bold), &n (underline), &o (italic), &m (strikethrough), &r (reset)
+  # Also supports: &#RRGGBB (hex colors) and MiniMessage: <gray>, <white>, <gradient:red:blue>, etc.
+  prefix: ""           # Example: "<gray>[</gray>" or "&7["
+  suffix: ""           # Example: "<gray>]</gray>" or "&7]"
+
+  # How often to update nametag positions (in ticks, 20 ticks = 1 second)
+  # Lower = smoother but more CPU. Recommended: 10-20
+  update-interval-ticks: 10
+
+  # Vertical offset from player's head (adjust if nametag is too high/low)
+  y-offset: 1.8
+
+  ## Group-Specific Formats
+  ## Default format is used if player's group is not listed here
+  group-formats:
+    default:
+      # Available placeholders:
+      # {group_name}    - Player's primary LuckPerms group name (e.g., "admin", "vip")
+      # {group_display} - Group display name from LuckPerms config (e.g., "Admin", "VIP Player")
+      # {name}          - Player's display name (from /playername name command, or player.name)
+      # {level}         - Player's XP level
+      # {health}        - Player's current health
+      # {max_health}    - Player's maximum health
+      # {prefix}        - Global prefix from display.prefix
+      # {suffix}        - Global suffix from display.suffix
+      # {message}       - Chat message (for chat-format only)
+      # [papi:...]     - Any PlaceholderAPI placeholder (requires PAPI installed)
+      # Color codes: &0-9, &a-f (colors), &l (bold), &n (underline), &o (italic), &m (strikethrough), &r (reset)
+      # Hex colors: &#RRGGBB (e.g., &#FF5555)
+      # MiniMessage: <gray>, <white>, <red>, <gradient:red:blue>, <rainbow>, etc.
+      name-format: "{prefix}<gray>{group_display}</gray> <white>{name}</white>{suffix}"
+      chat-format: "{prefix}<gray>{group_display}</gray> <white>{name}</white><gray>:</gray> {message}{suffix}"
+
+      ## Example: VIP group with different format
+      # vip:
+      #   name-format: "&e{group_display} &f{name} &e[LV {level}]"
+      #   chat-format: "&e{group_display} &f{name}&7: &f{message}"
+
+      ## Example: Admin group
+      # admin:
+      #   name-format: "&c{group_display} &f{name} &c[ADMIN]"
+      #   chat-format: "&c{group_display} &f{name}&7: &f{message}"
+
+
+## Chat Settings
+chat:
+  # Enable/disable custom chat formatting
+  # Set to false if using Essentials or other chat plugins
+  enabled: true
+
+
+## Performance Settings
+performance:
+  # How long to cache formatted text before recalculating (in ticks)
+  # Higher = less CPU, lower = more responsive to changes
+  cache-duration-ticks: 40
+
+  # Batch updates together (recommended true for better performance)
+  batch-updates: true
+
+
+## MiniMessage Formatting Help
+## Colors: <white>, <gray>, <dark_gray>, <red>, <green>, <blue>, <yellow>, <gold>, etc.
+## Gradient: <gradient:red:blue>text</gradient>
+## Rainbow: <rainbow>text</rainbow>
+## Bold: <bold>text</bold>
+## Italic: <italic>text</italic>
+## Underline: <underlined>text</underlined>
+## Reset: <reset>
+##
+## Color Codes: &0-9, &a-f (colors), &l (bold), &n (underline), &o (italic), &m (strikethrough), &r (reset)
+## Hex Colors: &#RRGGBB (e.g., &#FF5555)
+##
+## PlaceholderAPI: Use [papi:vault_eco_balance] for Vault money, [papi:player_health] for health, etc.
+## Requires PlaceholderAPI plugin installed.
+
+## Commands & Permissions
+## /playername reload                    - playernametag.reload     - Reload config
+## /playername name <player> <string>   - playernametag.name      - Set custom display name (supports color codes)
+## /playername name <player> clear      - playernametag.name      - Clear custom display name
+##
+## Example: /playername name Voxl_ &aTestName
+## Example: /playername name Voxl_ <green>Test Name
+## Note: Custom names are stored in LuckPerms meta: pn_custom_name

@@ -1,0 +1,11 @@
+PLAN.md
+.gradle/
+build/
+.idea/
+*.iml
+bin/
+.kotlin
+local_server
+build.sh
+start_server.sh
+.vscode
