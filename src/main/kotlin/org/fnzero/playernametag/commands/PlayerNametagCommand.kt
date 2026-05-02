@@ -56,21 +56,24 @@ class PlayerNametagCommand(private val plugin: PlayerNametag) : CommandExecutor,
         }
 
         if (args[2].equals("clear", ignoreCase = true)) {
-          val existingNode =
-            user.nodes.firstOrNull { it is MetaNode && it.metaKey == "pn_custom_name" }
+          val existingNode = user.nodes.firstOrNull { it is MetaNode && it.metaKey == "pn_custom_name" }
           if (existingNode != null) {
             user.data().remove(existingNode)
           }
           luckPerms.userManager.saveUser(user)
           sender.sendMessage("§aCleared custom name for §f${target.name}")
+          plugin.nametagManager.refresh(target)
         } else {
           val nameString = args.slice(2 until args.size).joinToString(" ")
+          val existingNode = user.nodes.firstOrNull { it is MetaNode && it.metaKey == "pn_custom_name" }
+          if (existingNode != null) {
+            user.data().remove(existingNode)
+          }
           user.data().add(MetaNode.builder("pn_custom_name", nameString).build())
           luckPerms.userManager.saveUser(user)
           sender.sendMessage("§aSet custom name for §f${target.name}§a to: $nameString")
+          plugin.nametagManager.refresh(target)
         }
-
-        plugin.nametagManager.createNametag(target)
       }
 
       else -> {
